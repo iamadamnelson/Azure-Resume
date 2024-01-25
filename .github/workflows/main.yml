@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - "frontend/**"
-      - "backend/**"
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name anelsonstorage --auth-mode key -d '$web' -s  --overwrite
+            az storage blob upload-batch --account-name anelsonstorage --auth-mode key -d '$web' -s  frontend/ --overwrite
            
   # Azure logout
     - name: logout
