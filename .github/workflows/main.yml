@@ -1,30 +1,59 @@
 name: Deploy Static Website to Azure
 
+
+
 on:
-  push:
-    branches:
-      - main # This triggers the workflow on a push to the main branch
+
+  push:
+
+    branches:
+
+      - main # This triggers the workflow on a push to the main branch
+
+
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Log in to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+  build-and-deploy:
 
-      - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az storage blob upload-batch --account-name anelsonstorage -d '$web' -s frontend --overwrite --auth-mode login
+    runs-on: ubuntu-latest
 
-      - name: Purge Front Door endpoint
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az afd endpoint purge --content-paths "/*" --profile-name "nelsoncdnfd" --endpoint-name "nelsoncdnfd" --resource-group "Nelson_RG"
+    steps:
+
+      - name: Checkout repository
+
+        uses: actions/checkout@v4
+
+
+
+      - name: Log in to Azure
+
+        uses: azure/login@v1
+
+        with:
+
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+
+
+      - name: Upload to blob storage
+
+        uses: azure/CLI@v1
+
+        with:
+
+          inlineScript: |
+
+            az storage blob upload-batch --account-name anelsonstorage -d '$web' -s . --overwrite --auth-mode login
+
+
+
+      - name: Purge Front Door endpoint
+
+        uses: azure/CLI@v1
+
+        with:
+
+          inlineScript: |
+
+            az afd endpoint purge --content-paths "/*" --profile-name "nelsoncdnfd" --endpoint-name "nelsoncdnfd" --resource-group "Nelson_RG
