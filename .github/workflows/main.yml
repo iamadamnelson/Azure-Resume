@@ -21,7 +21,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch --account-name anelsonstorage -d '$web' -s . --overwrite --auth-mode login
+            az storage blob upload-batch --account-name anelsonstorage -d '$web' -s frontend --overwrite --auth-mode login
 
       - name: Purge Front Door endpoint
         uses: azure/CLI@v1
