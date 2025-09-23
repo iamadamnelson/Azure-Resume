@@ -219,7 +219,7 @@ ul#nav li.current a {
    background: #161415;
    color: #0F0F0F;
    padding-top: 60px;
-   padding-bottom: 66px;
+   padding-bottom: 60px;
    overflow: hidden;
 }
 
@@ -305,8 +305,8 @@ ul#nav li.current a {
 #resume {
    background: #161415;
    height: 100vh;
-   padding-top: 90px;
-   padding-bottom: 72px;
+   padding-top: 60px;
+   padding-bottom: 60px;
    overflow: hidden;
    position: relative;
 }
@@ -396,7 +396,7 @@ ul#nav li.current a {
 
 #portfolio {
    background: #161415;
-   height: 87vh;
+   height: 80vh;
    padding-top: 120px;
    padding-bottom: 0px;
 }
