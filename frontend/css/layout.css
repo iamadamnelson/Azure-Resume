@@ -257,6 +257,8 @@ ul#nav li.current a {
    width: 240px;
    height: 240px;
    border-radius: 100%;
+   object-fit: cover;
+   object-position: center;
 }
 
 #about .main-col {
